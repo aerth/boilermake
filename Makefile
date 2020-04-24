@@ -41,6 +41,8 @@ define ADD_CLEAN_RULE
 	$${${1}_POSTCLEAN}
 endef
 
+MAINMK ?= main.mk
+
 # ADD_OBJECT_RULE - Parameterized "function" that adds a pattern rule for
 #   building object files from source files with the filename extension
 #   specified in the second argument. The first argument must be the name of the
@@ -338,7 +340,7 @@ TGT_STACK :=
 
 # Include the main user-supplied submakefile. This also recursively includes
 # all other user-supplied submakefiles.
-$(eval $(call INCLUDE_SUBMAKEFILE,main.mk))
+$(eval $(call INCLUDE_SUBMAKEFILE,$(MAINMK)))
 
 # Perform post-processing on global variables as needed.
 DEFS := $(addprefix -D,${DEFS})
